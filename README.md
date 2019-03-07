@@ -1,24 +1,5 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ruby on Rails based static site generator (use Rakefile tasks generate (to generate static site from hosted Rails local site version) and server (to preview the staticly generated output site.)
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Thanks to https://nowaker.net/post/ruby-on-rails-a-static-site-generator.html for providing the initial framework used for creating the generate/server tasks.
