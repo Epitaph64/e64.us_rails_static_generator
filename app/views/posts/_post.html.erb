@@ -1,0 +1,22 @@
+<div class='post'>
+	<h2 class='post-title'>
+		<%= @post.title %>
+	</h2>
+	<p class='post-date'>
+		<% if @post.override_post_date %>
+		<%= @post.override_post_date %>
+		<% else %>
+		<%= @post.created_at %>
+		<% end %>
+	</p>
+	<% if !@post.categories.empty? %>
+	<p class='post-categories'>
+		<%= @post.categories %>
+	</p>
+	<% end %>
+	<% if @post.richtext != nil && @post.richtext.to_plain_text.length > 0 %>
+		<%= @post.richtext.body_in_database.html_safe %><br/>
+	<% else %>
+		<%= md(@post.text).html_safe %>
+	<% end %>
+</div>

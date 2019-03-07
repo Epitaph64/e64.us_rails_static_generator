@@ -1,0 +1,40 @@
+<div class='home-header'>
+<h1>E64.US</h1>
+<%= render 'contact' %>
+<br/>
+</div>
+
+<div id='admin_access'>
+<h3>Dynamic Site-Builder Links</h3>
+<p><%= link_to 'Admin', admin_path %></p>
+<br/>
+</div>
+
+<br/>
+
+<div class='home-div'>
+
+<% @sposts = @posts.sort %>
+<table class='two-column'>
+	<tr><th>Date</th><th>Title</th></tr>
+	<% @sposts.each do |post| %>
+	<% @post = post %>
+	<tr>
+	<td>
+		<% if @post.override_post_date %>
+		<%= @post.override_post_date.to_date %>
+		<% else %>
+		<%= @post.created_at.to_date %>
+		<% end %>
+	</td>
+	<td>
+		<%= link_to @post.title, post_path(@post.id) %>
+	</td>
+	</tr>
+	<% end %>
+</table>
+</div>
+
+<div class='home-footer'>
+<%= render 'contact' %>
+</div>

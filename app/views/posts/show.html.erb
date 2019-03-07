@@ -1,0 +1,20 @@
+<div class='link-container'>
+<h1><%= link_to 'E64.US', home_index_path %></h1>
+</div>
+
+<div class='post-div'>
+
+<%= render 'post' %>
+
+<hr/>
+<div id='admin_access'>
+<%= link_to 'Edit', edit_post_path(@post) %><br/>
+<a href="javascript:history.back()">Back</a><br/>
+<br/>
+</div>
+
+<div class='link-container'>
+<%= link_to 'Home', home_index_path %>
+</div>
+
+</div>

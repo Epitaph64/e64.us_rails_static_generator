@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="robots" content="none" />
+	<title>e64.us</title>
+	<meta name="viewport" content="width=device-width">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= yield %>
+  </body>
+<script>
+	// https://www.html5rocks.com/en/tutorials/file/dndfiles/
+	// https://stackoverflow.com/questions/19017010/how-to-load-a-file-locally-and-display-its-contents-using-html-javascript-withou
+	// https://stackoverflow.com/questions/17068610/read-a-file-synchronously-in-javascript
+
+  function handleFileSelect(evt) {
+	var files = evt.target.files; // FileList object
+	
+	var f = evt.target.files[0];
+	
+	if (f)
+	{
+		var output = [];
+	    output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
+			f.size, ' bytes, last modified: ',
+			f.lastModifiedDate,
+			'</li>');
+	    document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+
+		var r = new FileReader();
+		
+		var result = '';
+		// callback which occurs on file load end
+		r.onloadend = function(e)
+		{
+			var lines = r.result.split("\n");
+			var yamlState = 0;
+			postTextElem = document.getElementById("post_text");
+			postTextElem.value = '';
+			for (var i = 0; i < lines.length; i++)
+			{
+				if (lines[i] == '---')
+				{
+					yamlState++;
+					continue;
+				}
+				if (yamlState == 1)
+				{
+					var yamlData = lines[i].split(":");
+					
+					if (yamlData.length == 2)
+					{
+						var property = yamlData[0].trim().toLowerCase();
+						var value = yamlData[1].trim();
+						
+						// apply YAML property values to respective form input fields
+						if (property == 'title')
+						{
+							if (value[0] == '"' && value[value.length-1] == '"')
+							{
+								value = value.slice(1, -1);
+							}
+							document.getElementById("post_title").value = value;
+						}
+						if (property == 'date')
+						{
+							if (value[0] == '"' && value[value.length-1] == '"')
+							{
+								value = value.slice(1, -1);
+							}
+							document.getElementById("post_override_post_date").value = value;
+						}
+						if (property == 'categories')
+						{
+							var elem = document.getElementById("post_categories")
+							if (value[0] == "[" && value[value.length-1] == "]")
+							{
+								value = value.slice(1, -1);
+							}
+							elem.value = value;
+						}
+					}
+				}
+				if (yamlState == 2)
+				{
+					postTextElem.value += lines[i];
+					if (i + 2 != lines.length)
+					{
+						postTextElem.value += "\n";
+					}
+				}
+			}
+		}
+		// execute the file load
+		r.readAsText(f);
+	}
+  }
+
+  document.getElementById('files').addEventListener('change', handleFileSelect, false);
+</script>
+</html>

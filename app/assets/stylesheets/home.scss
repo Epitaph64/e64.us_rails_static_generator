@@ -1,0 +1,188 @@
+// Place all the styles related to the Home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.post
+{
+  align: center;
+  height: auto;
+  width: 80%;
+  overflow: hidden;
+  margin-bottom: 1em;
+  padding-left: 1em;
+  padding-right: 1em;
+  display: inline-block;
+  border: 0.5em solid #3ca4ff;
+  background: #eee;
+  p
+  {
+    color: black;
+  }   
+  a
+  {
+    color: #00203c;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+  }
+  a:hover
+  {
+    color: #3ca4ff;
+  }
+}
+
+h1
+{
+  font-size: 3em;
+}
+
+h1, h2, h3, h4, h5, h6, p, a, th
+{
+  color: #3ca4ff;
+}
+
+td
+{
+  color: #96ceff;
+}
+
+.post-date
+{
+  margin-top: -1em;
+}
+
+#admin_access
+{
+  max-width: 64em;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+.link-container
+{
+  max-width: 64em;
+  margin-left: 1em;
+  margin-right: 1em;
+  h1 a
+  {
+	text-decoration: none;
+  }
+  margin-bottom: 3em;
+}
+
+.post-categories
+{
+  margin-top: -1em;
+}
+
+.two-column
+{
+  align: center;
+  td img
+  {
+    width: 100%;
+    border: 0.25em solid #3ca4ff;
+  }
+  td:first-child
+  {
+	padding-right: 1em;
+  }
+}
+
+.center-align
+{
+  img
+  {
+    max-width: 80%;
+    height: auto;
+    border: 0.25em solid #3ca4ff;
+    margin: 1em;
+  }
+  text-align: center;
+  align: center;
+}
+
+.outline
+{
+  border: 1px solid #3ca4ff;
+  padding: 2px;
+  background-color: white;
+  margin-bottom: 1.25em;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+html, body
+{
+  background-color: #00203c;
+  font-family: Consolas,monaco,monospace;
+}
+
+.home-div
+{
+  max-width: 64em;
+  margin-left: 1em;
+  margin-right: 1em;
+  .two-column td:first-child
+  {
+	min-width: 25%;
+	vertical-align: top;
+  }
+  .two-column td
+  {
+	padding-bottom: 1em;
+  }
+  .two-column th
+  {
+	padding-bottom: 1em;
+  }
+  .two-column
+  {
+	margin-bottom: 2em;
+  }
+}
+
+.post-div
+{
+  max-width: 64em;
+  margin-left: 1em;
+  margin-right: 1em;
+  .two-column td
+  {
+	padding-bottom: 1em;
+  }
+  .two-column th
+  {
+	padding-bottom: 1em;
+  }
+  .two-column
+  {
+	margin-bottom: 2em;
+  }
+  .post-date, .post-categories
+  {
+	font-weight: bold;
+  }
+}
+
+.contact
+{
+  a
+  {
+	font-size: 1.5em;
+  }
+}
+
+.home-header, .home-footer
+{
+  max-width: 64em;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+.home-footer
+{
+  margin-bottom: 3em;
+}
+
+audio {
+  max-width: 100%;
+  height: auto; }
